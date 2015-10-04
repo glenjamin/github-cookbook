@@ -1,7 +1,6 @@
 github Cookbook
 ===================
 
-Library Cookbook for github resources
+Chef Library Cookbook for declaring resources on GitHub
 
-
-test example: https://github.com/poise/poise-python/blob/master/lib/poise_python/resources/python_runtime_test.rb#L94-L98
+[![Build Status](https://img.shields.io/travis/glenjamin/skin-deep/master.svg)](https://travis-ci.org/glenjamin/skin-deep)
