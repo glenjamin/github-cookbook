@@ -1,6 +1,9 @@
+check : rubocop foodcritic
+
 test : rubocop foodcritic kitchen
 
-check : rubocop foodcritic
+travis: check
+	kitchen verify
 
 rubocop :
 	rubocop .
@@ -12,4 +15,4 @@ kitchen :
 	kitchen test
 
 .PHONY:
-	test check rubocop foodcritic kitchen
+	travis test check rubocop foodcritic kitchen
