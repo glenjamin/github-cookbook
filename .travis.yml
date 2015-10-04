@@ -1,0 +1,16 @@
+rvm: 2.2
+sudo: required
+cache: bundler
+
+services:
+  - docker
+
+before_install:
+  - >
+    curl -L https://www.getchef.com/chef/install.sh |
+      sudo bash -s -- -P chefdk -v 0.8.1
+  - chef exec gem install kitchen-docker
+
+script: chef exec make test
+
+secure: "tXasBa5Z0Od0OdjNV+MjGENl1Xlm+ufeeDbXHHwBKcmYGVeiPYc1qWIv45nT9PgjeT5550e4lUNtbxMBDfehXqE4P76moEKj5bbqZkq7u4ZVFZ5Fm0+IQkGbIq7WN1AUCi0YiQvwww0pgxrehwYqL6199nDDXOwEqXfh3dBlHEB5SSaJU14hnF8Tddt87qZV9hN0im0lbbGfseyKgAC0Hdv4jgp6w/glEkXgX7xJsTf5y4jssHFkyNEH4F7j28ImtkZXXzTxMGnbGk2Gt+IxYb39DEqvkpM49rMMYQtHNkfvGaSUmM+DBrtU4J01/JbPIeWP77bc8KJzPb6p/9DUOrrbEYWhdMLWPFjpjW7v4yghAUE22L0A84cJDISCoQGldY7swkrAmZ1TxH9znhACQTo1xPPXY99HVWxzBqNee9TLxvgonzbz6dJl39QoyZngmDvNqEtw0byXyxT2voWAZbvTqEMdqwhyUzoIw/okipKN67CJbWZ0M8fvCUwytBJdCpxvE2sSBJXF3cA02hEDtELvU1JpTDRj8flOgi40tGG4xZn+Smd8GYNTRRPj/uV00acMQq+iSg5ptBearjrB1lL/JPYPfEwqCpkbrDiV+WHMDUf1J1CP6SSfy2xjFKHfQrYIdL14cJoig+9swaQKUWBfsIU5l4flDCKlPeQW2I4="

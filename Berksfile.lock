@@ -1,0 +1,11 @@
+DEPENDENCIES
+  github
+    path: .
+    metadata: true
+  github-test
+    path: test/fixtures/cookbooks/github-test
+
+GRAPH
+  github (0.1.0)
+  github-test (1.0.0)
+    github (>= 0.0.0)
