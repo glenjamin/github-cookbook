@@ -14,6 +14,7 @@ module GithubCookbook
         access_token: node['github']['token'],
         auto_paginate: true
       ).tap do |github|
+        # opt in to new teams/organisations API
         github.default_media_type =
           'application/vnd.github.ironman-preview+json'
       end
