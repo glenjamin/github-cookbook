@@ -2,7 +2,7 @@ module GithubCookbook
   module Helpers
     def load_current_resource
       require 'octokit'
-    rescue
+    rescue LoadError
       chef_gem 'octokit' do
         compile_time true
       end
