@@ -1,10 +1,6 @@
 module GithubCookbook
   module Helpers
-    def load_current_value
-      load_current_resource
-    end
-
-    def load_current_resource
+    def self.included(_klass)
       require 'octokit'
     rescue LoadError
       chef_gem 'octokit' do

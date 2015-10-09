@@ -39,7 +39,7 @@ end
 def current_repo
   @current_repo ||= begin
     github.repository(slug)
-  rescue Octokit::NotFound
+  rescue ::Octokit::NotFound
     nil
   end
 end
