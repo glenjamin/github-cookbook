@@ -10,7 +10,9 @@ platforms:
   - name: centos-7.1
     driver_config:
       provision_command:
-        - curl -L -O https://www.opscode.com/chef/install.sh && bash install.sh
+        - >
+          curl -L -O https://www.opscode.com/chef/install.sh &&
+          bash install.sh -v <%= ENV.fetch 'CHEF_VERSION', '12.5' %>
 
 suites:
   - name: default

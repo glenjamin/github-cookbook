@@ -1,5 +1,9 @@
 module GithubCookbook
   module Helpers
+    def load_current_value
+      load_current_resource
+    end
+
     def load_current_resource
       require 'octokit'
     rescue LoadError
