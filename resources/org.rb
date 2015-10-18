@@ -19,6 +19,8 @@ def all_users
 end
 
 include GithubCookbook::Helpers
+include GithubCookbook::ConvergeBy
+include Chef::DSL::Recipe::FullDSL
 
 action :sync do
   remove_members(all_current.reject { |m| all_users.include?(m) })
@@ -29,7 +31,7 @@ end
 def add_members(type, users)
   return if users.empty?
   skip_pending_members(users, type).each do |user|
-    converge_by "Adding #{user} to #{org} as #{type}" do
+    converge_by "Adding user #{user} to #{org} as #{type}" do
       github.update_org_membership org, role: type, user: user
     end
   end
@@ -38,7 +40,7 @@ end
 def remove_members(users)
   return if users.empty?
   users.each do |user|
-    converge_by "Removing #{user} from #{org}" do
+    converge_by "Removing user #{user} from #{org}" do
       github.remove_org_member org, user
     end
   end
@@ -48,7 +50,7 @@ def skip_pending_members(users, type)
   users.reject do |user|
     pending = membership_pending?(user, type)
     if pending
-      log "Membership pending for #{user} to #{org} as #{type}" do
+      log "Membership pending for user #{user} to #{org} as #{type}" do
         level :warn
       end
     end
@@ -69,7 +71,7 @@ def current_members
 end
 
 def get_members(type)
-  github.org_members(org, role: type).map(&:login).to_set
+  github.org_members(org, role: type).map { |m| m[:login] }.to_set
 end
 
 def membership_pending?(user, type)

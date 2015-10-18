@@ -12,6 +12,8 @@ def slug
 end
 
 include GithubCookbook::Helpers
+include GithubCookbook::ConvergeBy
+include Chef::DSL::Recipe::FullDSL
 
 action :create do
   if current_repo && !changes.empty?
