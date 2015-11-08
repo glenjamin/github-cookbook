@@ -36,7 +36,7 @@ include GithubCookbook::Helpers
 include GithubCookbook::ConvergeBy
 include Chef::DSL::Recipe::FullDSL
 
-action :create do
+action :sync do
   if current_team && !changes.empty?
     converge_by "Updating team #{name} #{changes.inspect}" do
       github.update_team(id, changes)

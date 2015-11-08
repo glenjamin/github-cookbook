@@ -33,6 +33,36 @@ github_repo 'test3' do
   homepage "http://example.com"
 end
 
+github_repo_hook 'test3-httpbin' do
+  repo 'test3'
+  org node['github-test']['org']
+  type :web
+  hook_events %w(push)
+  url 'https://httpbin.org/post'
+  content_type :json
+end
+
+github_repo_hook 'test3-travis' do
+  repo 'test3'
+  org node['github-test']['org']
+  type :travis
+  hook_events %w(push)
+  config user: 'abc', password: 'def', domain: 'ghi'
+end
+
+github_repo_hook 'test3-delete' do
+  repo 'test3'
+  org node['github-test']['org']
+  type :web
+  hook_events %w(push)
+  url 'http://example.com'
+  action [:create, :delete]
+end
+
+# github_repo_zap_hooks 'test3' do
+#   org node['github-test']['org']
+# end
+
 github_team "america" do
   org node['github-test']['org']
   description "bad pun"
